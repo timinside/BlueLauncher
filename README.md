@@ -1,2 +1,2 @@
 # BlueLauncher
-Установщик продуктов от bbzer0. Доступен по команде в PowerShell.
+bbzer0's Products Online Installer. Available with PowerShell commands also.
