@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<root>
+  <class name="MainForm">
+    
+  
+  
+  
+  
+  <method name="doButtonClickLeft">
+      <open file="C:/Windows/Temp/BlueLauncher/install.log" file-type="string"/>
+    </method>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <method name="doShow">
+      <sleep sync="" sync-type="" value="200" value-type="integer"/>
+      <phpLine expr="unlink('C:/Windows/Temp/BlueLauncher/install.log')" expr-type="expr"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Подготовка папки...\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <phpLine expr="fs::makeDir('C:/Windows/Temp/BlueLauncher')" expr-type="expr"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Проверка наличие интернета...\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <ifExpr expr="file_get_contents('https://github.com') !== false" expr-type="expr" not="1" not-type=""/>
+      <openBlock/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[ERROR] Установка отменена: нет подключения к интернету.\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <elementSetText object="label" object-type="object" relative="" relative-type="" value="Установка отменена" value-type="string"/>
+      <elementSetText object="labelAlt" object-type="object" relative="" relative-type="" value="Нет подключения к интернету." value-type="string"/>
+      <setProperty object="progressBar" object-type="object" property="progress" property-type="" value="0" value-type="string"/>
+      <elementHide object="progressBar" object-type="object"/>
+      <elementShow object="button" object-type="object"/>
+      <exit/>
+      <closeBlock/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Проверка наличия обновлений...\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <setVar name="latestVersion" name-type="" value="file_get_contents('https://raw.githubusercontent.com/timinside/BlueLauncher/refs/heads/main/ver.ini')" value-type="expr"/>
+      <ifVar method="contains" method-type="" name="latestVersion" name-type="" not="" not-type="" value="cancel" value-type="string"/>
+      <openBlock/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[ERROR] Установка отменена: версия BlueLauncher более не поддерживается. Требуется обновление BlueLauncher.\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <elementSetText object="label" object-type="object" relative="" relative-type="" value="Установка отменена" value-type="string"/>
+      <elementSetText object="labelAlt" object-type="object" relative="" relative-type="" value="Версия BlueLauncher более не поддерживается. Требуется обновление BlueLauncher." value-type="string"/>
+      <setProperty object="progressBar" object-type="object" property="progress" property-type="" value="0" value-type="string"/>
+      <elementHide object="progressBar" object-type="object"/>
+      <elementShow object="button" object-type="object"/>
+      <open file="https://github.com/timinside/BlueLauncher/releases/latest" file-type="string"/>
+      <exit/>
+      <closeBlock/>
+      <ifVar method="contains" method-type="" name="latestVersion" name-type="" not="1" not-type="" value="1.1" value-type="string"/>
+      <openBlock/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[ERROR] Установка отменена: требуется обновление BlueLauncher.\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <elementSetText object="label" object-type="object" relative="" relative-type="" value="Установка отменена" value-type="string"/>
+      <elementSetText object="labelAlt" object-type="object" relative="" relative-type="" value="Требуется обновление BlueLauncher." value-type="string"/>
+      <setProperty object="progressBar" object-type="object" property="progress" property-type="" value="0" value-type="string"/>
+      <elementHide object="progressBar" object-type="object"/>
+      <elementShow object="button" object-type="object"/>
+      <open file="https://github.com/timinside/BlueLauncher/releases/latest" file-type="string"/>
+      <exit/>
+      <closeBlock/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Проверка наличия конфигурации...\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <ifFileExists file="C:/Windows/Temp/BlueLauncher/productName.ini" file-type="string" not="" not-type=""/>
+      <openBlock/>
+      <setVar name="productName" name-type="" value="file_get_contents('C:/Windows/Temp/BlueLauncher/productName.ini')" value-type="expr"/>
+      <phpLine expr="unlink('C:/Windows/Temp/BlueLauncher/productName.ini')" expr-type="expr"/>
+      <ifFileExists file="C:/Windows/Temp/BlueLauncher/update.ini" file-type="string" not="" not-type=""/>
+      <openBlock/>
+      <setVar name="update" name-type="" value="file_get_contents('C:/Windows/Temp/BlueLauncher/update.ini')" value-type="expr"/>
+      <phpLine expr="unlink('C:/Windows/Temp/BlueLauncher/update.ini')" expr-type="expr"/>
+      <closeBlock/>
+      <closeBlock/>
+      <else/>
+      <openBlock/>
+      <showFormAndWait form="Select" form-type="form"/>
+      <ifVar method="equals" method-type="" name="productName" name-type="" not="" not-type="" value="no" value-type="string"/>
+      <openBlock/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[ERROR] Установка отменена: продукт для установки/скачивания не выбран.\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <elementSetText object="label" object-type="object" relative="" relative-type="" value="Установка отменена" value-type="string"/>
+      <elementSetText object="labelAlt" object-type="object" relative="" relative-type="" value="Продукт для установки/скачивания не выбран." value-type="string"/>
+      <setProperty object="progressBar" object-type="object" property="progress" property-type="" value="0" value-type="string"/>
+      <elementHide object="progressBar" object-type="object"/>
+      <elementShow object="button" object-type="object"/>
+      <exit/>
+      <closeBlock/>
+      <closeBlock/>
+      <ifVar method="contains" method-type="" name="productName" name-type="" not="" not-type="" value="XTweaker" value-type="string"/>
+      <openBlock/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Продукт для установки: XTweaker\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <elementSetText object="label" object-type="object" relative="" relative-type="" value="Установка XTweaker" value-type="string"/>
+      <ifVar method="equals" method-type="" name="update" name-type="" not="" not-type="" value="true" value-type="string"/>
+      <elementSetText object="label" object-type="object" relative="" relative-type="" value="Обновление XTweaker" value-type="string"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Скачивание файлов... скачано 0 из 1\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <elementSetText object="labelAlt" object-type="object" relative="" relative-type="" value="Скачивание файлов..." value-type="string"/>
+      <setProperty object="progressBar" object-type="object" property="progress" property-type="" value="5" value-type="string"/>
+      <sleep sync="" sync-type="" value="200" value-type="integer"/>
+      <phpLine expr="fs::copy('https://github.com/timinside/XTweaker/releases/latest/download/XTweakerSetup.exe','C:/Windows/Temp/BlueLauncher/setup.exe')" expr-type="expr"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Скачивание файлов... скачано 1 из 1\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Скачивание завершено.\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Распаковка файлов...\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <elementSetText object="labelAlt" object-type="object" relative="" relative-type="" value="Распаковка файлов..." value-type="string"/>
+      <setProperty object="progressBar" object-type="object" property="progress" property-type="" value="70" value-type="string"/>
+      <sleep sync="" sync-type="" value="200" value-type="integer"/>
+      <exec command="cmd /c start /wait C:/Windows/Temp/BlueLauncher/setup.exe /SILENT" command-type="string" wait="1" wait-type=""/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Распаковка завершена.\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <setProperty object="progressBar" object-type="object" property="progress" property-type="" value="99" value-type="string"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Очистка...\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <elementSetText object="labelAlt" object-type="object" relative="" relative-type="" value="Очистка..." value-type="string"/>
+      <sleep sync="" sync-type="" value="200" value-type="integer"/>
+      <phpLine expr="unlink('C:/Windows/Temp/BlueLauncher/setup.exe')" expr-type="expr"/>
+      <setProperty object="progressBar" object-type="object" property="progress" property-type="" value="100" value-type="string"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Очистка завершена.\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Установка успешно завершена.\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <ifVar method="equals" method-type="" name="update" name-type="" not="" not-type="" value="true" value-type="string"/>
+      <openBlock/>
+      <exec command="cmd /c start xtweaker.exe" command-type="string" wait="" wait-type=""/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Программа перезапущена, выход...\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <applicationShutdown/>
+      <exit/>
+      <closeBlock/>
+      <elementSetText object="label" object-type="object" relative="" relative-type="" value="Установка завершена" value-type="string"/>
+      <elementSetText object="labelAlt" object-type="object" relative="" relative-type="" value="Спасибо за установку!" value-type="string"/>
+      <elementHide object="progressBar" object-type="object"/>
+      <elementShow object="button" object-type="object"/>
+      <exit/>
+      <closeBlock/>
+      <ifVar method="contains" method-type="" name="productName" name-type="" not="" not-type="" value="BetterDevelNext" value-type="string"/>
+      <openBlock/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Продукт для установки: BetterDevelNext\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <elementSetText object="label" object-type="object" relative="" relative-type="" value="Установка BetterDevelNext" value-type="string"/>
+      <ifVar method="equals" method-type="" name="update" name-type="" not="" not-type="" value="true" value-type="string"/>
+      <elementSetText object="label" object-type="object" relative="" relative-type="" value="Обновление BetterDevelNext" value-type="string"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Скачивание файлов... скачано 0 из 1\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <elementSetText object="labelAlt" object-type="object" relative="" relative-type="" value="Скачивание файлов..." value-type="string"/>
+      <setProperty object="progressBar" object-type="object" property="progress" property-type="" value="5" value-type="string"/>
+      <sleep sync="" sync-type="" value="200" value-type="integer"/>
+      <phpLine expr="fs::copy('https://github.com/timinside/BetterDevelNext/releases/latest/download/BetterDevelNextSetup.exe','C:/Windows/Temp/BlueLauncher/setup.exe')" expr-type="expr"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Скачивание файлов... скачано 1 из 1\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Скачивание завершено.\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Распаковка файлов...\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <elementSetText object="labelAlt" object-type="object" relative="" relative-type="" value="Распаковка файлов..." value-type="string"/>
+      <setProperty object="progressBar" object-type="object" property="progress" property-type="" value="70" value-type="string"/>
+      <sleep sync="" sync-type="" value="200" value-type="integer"/>
+      <exec command="cmd /c start /wait C:/Windows/Temp/BlueLauncher/setup.exe" command-type="string" wait="1" wait-type=""/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Распаковка завершена.\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <setProperty object="progressBar" object-type="object" property="progress" property-type="" value="99" value-type="string"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Очистка...\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <elementSetText object="labelAlt" object-type="object" relative="" relative-type="" value="Очистка..." value-type="string"/>
+      <sleep sync="" sync-type="" value="200" value-type="integer"/>
+      <phpLine expr="unlink('C:/Windows/Temp/BlueLauncher/setup.exe')" expr-type="expr"/>
+      <setProperty object="progressBar" object-type="object" property="progress" property-type="" value="100" value-type="string"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Очистка завершена.\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Установка успешно завершена.\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <ifVar method="equals" method-type="" name="update" name-type="" not="" not-type="" value="true" value-type="string"/>
+      <openBlock/>
+      <exec command="cmd /c start BetterDevelNext.exe" command-type="string" wait="" wait-type=""/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Программа перезапущена, выход...\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <applicationShutdown/>
+      <exit/>
+      <closeBlock/>
+      <elementSetText object="label" object-type="object" relative="" relative-type="" value="Установка завершена" value-type="string"/>
+      <elementSetText object="labelAlt" object-type="object" relative="" relative-type="" value="Спасибо за установку!" value-type="string"/>
+      <elementHide object="progressBar" object-type="object"/>
+      <elementShow object="button" object-type="object"/>
+      <exit/>
+      <closeBlock/>
+      <ifVar method="contains" method-type="" name="productName" name-type="" not="" not-type="" value="SimpleCoder" value-type="string"/>
+      <openBlock/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Продукт для установки: SimpleCoder\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <elementSetText object="label" object-type="object" relative="" relative-type="" value="Установка SimpleCoder" value-type="string"/>
+      <ifVar method="equals" method-type="" name="update" name-type="" not="" not-type="" value="true" value-type="string"/>
+      <elementSetText object="label" object-type="object" relative="" relative-type="" value="Обновление SimpleCoder" value-type="string"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Скачивание файлов... скачано 0 из 1\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <elementSetText object="labelAlt" object-type="object" relative="" relative-type="" value="Скачивание файлов..." value-type="string"/>
+      <setProperty object="progressBar" object-type="object" property="progress" property-type="" value="5" value-type="string"/>
+      <sleep sync="" sync-type="" value="200" value-type="integer"/>
+      <phpLine expr="fs::copy('https://github.com/timinside/SimpleCoder/releases/latest/download/SimpleCoderSetup.exe','C:/Windows/Temp/BlueLauncher/setup.exe')" expr-type="expr"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Скачивание файлов... скачано 1 из 1\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Скачивание завершено.\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Распаковка файлов...\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <elementSetText object="labelAlt" object-type="object" relative="" relative-type="" value="Распаковка файлов..." value-type="string"/>
+      <setProperty object="progressBar" object-type="object" property="progress" property-type="" value="70" value-type="string"/>
+      <sleep sync="" sync-type="" value="200" value-type="integer"/>
+      <exec command="cmd /c start /wait C:/Windows/Temp/BlueLauncher/setup.exe" command-type="string" wait="1" wait-type=""/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Распаковка завершена.\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <setProperty object="progressBar" object-type="object" property="progress" property-type="" value="99" value-type="string"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Очистка...\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <elementSetText object="labelAlt" object-type="object" relative="" relative-type="" value="Очистка..." value-type="string"/>
+      <sleep sync="" sync-type="" value="200" value-type="integer"/>
+      <phpLine expr="unlink('C:/Windows/Temp/BlueLauncher/setup.exe')" expr-type="expr"/>
+      <setProperty object="progressBar" object-type="object" property="progress" property-type="" value="100" value-type="string"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Очистка завершена.\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Установка успешно завершена.\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <ifVar method="equals" method-type="" name="update" name-type="" not="" not-type="" value="true" value-type="string"/>
+      <openBlock/>
+      <exec command="cmd /c start simplecoder.exe" command-type="string" wait="" wait-type=""/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Программа перезапущена, выход...\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <applicationShutdown/>
+      <exit/>
+      <closeBlock/>
+      <elementSetText object="label" object-type="object" relative="" relative-type="" value="Установка завершена" value-type="string"/>
+      <elementSetText object="labelAlt" object-type="object" relative="" relative-type="" value="Спасибо за установку!" value-type="string"/>
+      <elementHide object="progressBar" object-type="object"/>
+      <elementShow object="button" object-type="object"/>
+      <exit/>
+      <closeBlock/>
+      <ifVar method="contains" method-type="" name="productName" name-type="" not="" not-type="" value="develnext-builder" value-type="string"/>
+      <openBlock/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Продукт для установки: develnext-builder\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <elementSetText object="label" object-type="object" relative="" relative-type="" value="Установка develnext-builder" value-type="string"/>
+      <ifVar method="equals" method-type="" name="update" name-type="" not="" not-type="" value="true" value-type="string"/>
+      <elementSetText object="label" object-type="object" relative="" relative-type="" value="Обновление develnext-builder" value-type="string"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Скачивание файлов... скачано 0 из 1\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <elementSetText object="labelAlt" object-type="object" relative="" relative-type="" value="Скачивание файлов..." value-type="string"/>
+      <setProperty object="progressBar" object-type="object" property="progress" property-type="" value="5" value-type="string"/>
+      <sleep sync="" sync-type="" value="200" value-type="integer"/>
+      <phpLine expr="fs::copy('https://github.com/timinside/develnext-builder/releases/latest/download/Setup.exe','C:/Windows/Temp/BlueLauncher/setup.exe')" expr-type="expr"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Скачивание файлов... скачано 1 из 1\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Скачивание завершено.\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Распаковка файлов...\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <elementSetText object="labelAlt" object-type="object" relative="" relative-type="" value="Распаковка файлов..." value-type="string"/>
+      <setProperty object="progressBar" object-type="object" property="progress" property-type="" value="70" value-type="string"/>
+      <sleep sync="" sync-type="" value="200" value-type="integer"/>
+      <exec command="cmd /c start /wait C:/Windows/Temp/BlueLauncher/setup.exe" command-type="string" wait="1" wait-type=""/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Распаковка завершена.\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <setProperty object="progressBar" object-type="object" property="progress" property-type="" value="99" value-type="string"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Очистка...\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <elementSetText object="labelAlt" object-type="object" relative="" relative-type="" value="Очистка..." value-type="string"/>
+      <sleep sync="" sync-type="" value="200" value-type="integer"/>
+      <phpLine expr="unlink('C:/Windows/Temp/BlueLauncher/setup.exe')" expr-type="expr"/>
+      <setProperty object="progressBar" object-type="object" property="progress" property-type="" value="100" value-type="string"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Очистка завершена.\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Установка успешно завершена.\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <ifVar method="equals" method-type="" name="update" name-type="" not="" not-type="" value="true" value-type="string"/>
+      <openBlock/>
+      <exec command="cmd /c start simplecoder.exe" command-type="string" wait="" wait-type=""/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Программа перезапущена, выход...\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <applicationShutdown/>
+      <exit/>
+      <closeBlock/>
+      <elementSetText object="label" object-type="object" relative="" relative-type="" value="Установка завершена" value-type="string"/>
+      <elementSetText object="labelAlt" object-type="object" relative="" relative-type="" value="Спасибо за установку!" value-type="string"/>
+      <elementHide object="progressBar" object-type="object"/>
+      <elementShow object="button" object-type="object"/>
+      <exit/>
+      <closeBlock/>
+      <ifVar method="contains" method-type="" name="productName" name-type="" not="" not-type="" value="LunaClean" value-type="string"/>
+      <openBlock/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Продукт для установки: LunaClean\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <elementSetText object="label" object-type="object" relative="" relative-type="" value="Установка LunaClean" value-type="string"/>
+      <ifVar method="equals" method-type="" name="update" name-type="" not="" not-type="" value="true" value-type="string"/>
+      <elementSetText object="label" object-type="object" relative="" relative-type="" value="Обновление LunaClean" value-type="string"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Скачивание файлов... скачано 0 из 1\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <elementSetText object="labelAlt" object-type="object" relative="" relative-type="" value="Скачивание файлов..." value-type="string"/>
+      <setProperty object="progressBar" object-type="object" property="progress" property-type="" value="5" value-type="string"/>
+      <sleep sync="" sync-type="" value="200" value-type="integer"/>
+      <phpLine expr="fs::copy('https://github.com/timinside/LunaClean/releases/latest/download/Setup.exe','C:/Windows/Temp/BlueLauncher/setup.exe')" expr-type="expr"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Скачивание файлов... скачано 1 из 1\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Скачивание завершено.\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Распаковка файлов...\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <elementSetText object="labelAlt" object-type="object" relative="" relative-type="" value="Распаковка файлов..." value-type="string"/>
+      <setProperty object="progressBar" object-type="object" property="progress" property-type="" value="70" value-type="string"/>
+      <sleep sync="" sync-type="" value="200" value-type="integer"/>
+      <exec command="cmd /c start /wait C:/Windows/Temp/BlueLauncher/setup.exe /SILENT" command-type="string" wait="1" wait-type=""/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Распаковка завершена.\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <setProperty object="progressBar" object-type="object" property="progress" property-type="" value="99" value-type="string"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Очистка...\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <elementSetText object="labelAlt" object-type="object" relative="" relative-type="" value="Очистка..." value-type="string"/>
+      <sleep sync="" sync-type="" value="200" value-type="integer"/>
+      <phpLine expr="unlink('C:/Windows/Temp/BlueLauncher/setup.exe')" expr-type="expr"/>
+      <setProperty object="progressBar" object-type="object" property="progress" property-type="" value="100" value-type="string"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Очистка завершена.\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Установка успешно завершена.\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <ifVar method="equals" method-type="" name="update" name-type="" not="" not-type="" value="true" value-type="string"/>
+      <openBlock/>
+      <exec command="cmd /c start simplecoder.exe" command-type="string" wait="" wait-type=""/>
+      <phpLine expr="file_put_contents('C:/Windows/Temp/BlueLauncher/install.log', &quot;[INFO] Программа перезапущена, выход...\r\n&quot;, FILE_APPEND)" expr-type="expr"/>
+      <applicationShutdown/>
+      <exit/>
+      <closeBlock/>
+      <elementSetText object="label" object-type="object" relative="" relative-type="" value="Установка завершена" value-type="string"/>
+      <elementSetText object="labelAlt" object-type="object" relative="" relative-type="" value="Спасибо за установку!" value-type="string"/>
+      <elementHide object="progressBar" object-type="object"/>
+      <elementShow object="button" object-type="object"/>
+      <exit/>
+      <closeBlock/>
+    </method>
+  </class>
+</root>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?import javafx.scene.*?><?import javafx.collections.*?><?import javafx.scene.layout.*?><?import javafx.scene.control.*?><?import javafx.scene.text.*?><?import javafx.scene.image.*?><?import javafx.scene.shape.*?><?import javafx.scene.paint.*?><?import javafx.scene.web.*?><?import javafx.geometry.*?><?import java.lang.*?><?import org.develnext.jphp.ext.javafx.classes.data.*?><?import org.develnext.jphp.ext.javafx.support.*?><?import org.develnext.jphp.ext.javafx.support.control.*?><?import org.develnext.jphp.ext.game.support.*?><AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" focusTraversable="false" id="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="176" prefWidth="344" styleClass="">
+  <children>
+    <Rectangle arcHeight="0" arcWidth="0" fill="#1a1a1a" focusTraversable="false" height="176" id="rect" layoutX="0" layoutY="0" stroke="#334db3" strokeType="INSIDE" strokeWidth="0" styleClass="" width="344"/>
+    <FlatButton alignment="CENTER" borderRadius="15" color="#f2f2f2" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" hoverColor="#f2f2f2" id="button" layoutX="24" layoutY="48" prefHeight="32" prefWidth="144" styleClass="x-flat-button " text="Vynx Games Launcher" textAlignment="CENTER" textFill="#1d1d1d" underline="false" wrapText="false">
+      <font>
+        <Font name="System Regular" size="12"/>
+      </font>
+    </FlatButton>
+    <Data cursor="DEFAULT" enabled="" id="data-button" visible="1"/>
+    <LabelEx alignment="CENTER_LEFT" autoSize="false" contentDisplay="LEFT" ellipsisString="..." focusTraversable="false" graphicTextGap="4" id="labelAlt" layoutX="24" layoutY="16" prefHeight="16" prefWidth="96" styleClass="label " text="Программы:" textAlignment="LEFT" textFill="#ffffff" underline="false" wrapText="false">
+      <font>
+        <Font name="System Regular" size="12"/>
+      </font>
+    </LabelEx>
+    <Data cursor="DEFAULT" enabled="1" id="data-labelAlt" visible="1"/>
+    <FlatButton alignment="CENTER" borderRadius="15" color="#f2f2f2" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" hoverColor="#f2f2f2" id="button6" layoutX="176" layoutY="48" prefHeight="32" prefWidth="144" styleClass="x-flat-button " text="FlaxyIDE" textAlignment="CENTER" textFill="#1d1d1d" underline="false" wrapText="false">
+      <font>
+        <Font name="System Regular" size="12"/>
+      </font>
+    </FlatButton>
+    <Data cursor="DEFAULT" enabled="1" id="data-button6" visible="1"/>
+    <FlatButton alignment="CENTER" borderRadius="15" color="#f2f2f2" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" hoverColor="#f2f2f2" id="button9" layoutX="176" layoutY="88" prefHeight="32" prefWidth="144" styleClass="x-flat-button " text="LunaClean" textAlignment="CENTER" textFill="#1d1d1d" underline="false" wrapText="false">
+      <font>
+        <Font name="System Regular" size="12"/>
+      </font>
+    </FlatButton>
+    <Data cursor="DEFAULT" enabled="1" id="data-button9" visible="1"/>
+    <FlatButton alignment="CENTER" borderRadius="15" color="#f2f2f2" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" hoverColor="#f2f2f2" id="button10" layoutX="24" layoutY="88" prefHeight="32" prefWidth="144" styleClass="x-flat-button " text="KartoshkaTools" textAlignment="CENTER" textFill="#1d1d1d" underline="false" wrapText="false">
+      <font>
+        <Font name="System Regular" size="12"/>
+      </font>
+    </FlatButton>
+    <Data cursor="DEFAULT" enabled="1" id="data-button10" tooltipText="Программа не готова" visible="1"/>
+    <FlatButton alignment="CENTER" borderRadius="15" color="#f2f2f2" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" hoverColor="#f2f2f2" id="buttonAlt" layoutX="24" layoutY="128" prefHeight="32" prefWidth="144" styleClass="x-flat-button " text="XTweaker (заброшен)" textAlignment="CENTER" textFill="#1d1d1d" underline="false" wrapText="false">
+      <font>
+        <Font name="System Regular" size="12"/>
+      </font>
+    </FlatButton>
+    <Data cursor="DEFAULT" enabled="1" id="data-buttonAlt" tooltipText="Программа не готова" visible="1"/>
+    <Data cursor="DEFAULT" enabled="1" id="data-rect" visible="1"/>
+    <FlatButton alignment="CENTER" borderRadius="15" color="#f2f2f2" contentDisplay="LEFT" ellipsisString="..." focusTraversable="true" graphicTextGap="4" hoverColor="#f2f2f2" id="button3" layoutX="176" layoutY="128" opacity="0.67073170731707" prefHeight="32" prefWidth="144" styleClass="x-flat-button " text="somethin soon..." textAlignment="CENTER" textFill="#1d1d1d" underline="false" wrapText="false">
+      <font>
+        <Font name="System Regular" size="12"/>
+      </font>
+    </FlatButton>
+    <Data cursor="DEFAULT" enabled="" id="data-button3" tooltipText="Программа не готова" visible="1"/>
+  </children>
+</AnchorPane>
